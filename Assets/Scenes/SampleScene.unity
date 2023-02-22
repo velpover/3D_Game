@@ -1352,6 +1352,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1222395200}
   - component: {fileID: 1222395199}
+  - component: {fileID: 1222395201}
+  - component: {fileID: 1222395202}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -1436,6 +1438,33 @@ Transform:
   m_Father: {fileID: 348122299}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222395201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222395198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a0c3cab03df2f4c864b9fba83ddd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1222395202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222395198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954ef4a174e2d4145918a33535d71a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manaBar: {fileID: 47035473}
+  obj: {fileID: 467934202}
+  _pointLight: {fileID: 1876493843}
 --- !u!1 &1342463829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6860756994242604922, guid: 003b064097ba1bd4fa565d0210db6d9d, type: 3}
@@ -1675,22 +1704,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!54 &1737591787
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737591780}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1786607364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,7 +1829,6 @@ GameObject:
   - component: {fileID: 1876493841}
   - component: {fileID: 1876493842}
   - component: {fileID: 1876493843}
-  - component: {fileID: 1876493844}
   m_Layer: 6
   m_Name: Point Light
   m_TagString: Untagged
@@ -1913,20 +1925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a0c3cab03df2f4c864b9fba83ddd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1876493844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876493840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 954ef4a174e2d4145918a33535d71a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _manaBar: {fileID: 47035473}
-  obj: {fileID: 467934202}
 --- !u!1001 &2107557561
 PrefabInstance:
   m_ObjectHideFlags: 0

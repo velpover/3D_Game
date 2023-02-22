@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class EventManager 
 {
     private Dictionary<string, Action<object>> eventDictionary;
 
@@ -41,39 +41,39 @@ public class EventManager : MonoBehaviour
     //    }
     //}
 
-    public static void StartListening(string eventName, Action<Dictionary<int, object>> listener)
-    {
-        Action<Dictionary<int, object>> thisEvent;
+    //public static void StartListening(string eventName, Action<Dictionary<int, object>> listener)
+    //{
+    //    Action<Dictionary<int, object>> thisEvent;
 
-        if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
-        {
-            thisEvent += listener;
-            instance.eventDictionary[eventName] = thisEvent;
-        }
-        else
-        {
-            thisEvent += listener;
-            instance.eventDictionary.Add(eventName, thisEvent);
-        }
-    }
+    //    if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
+    //    {
+    //        thisEvent += listener;
+    //        instance.eventDictionary[eventName] = thisEvent;
+    //    }
+    //    else
+    //    {
+    //        thisEvent += listener;
+    //        instance.eventDictionary.Add(eventName, thisEvent);
+    //    }
+    //}
 
-    public static void StopListening(string eventName, Action<Dictionary<int, object>> listener)
-    {
-        if (eventManager == null) return;
-        Action<Dictionary<int, object>> thisEvent;
-        if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
-        {
-            thisEvent -= listener;
-            instance.eventDictionary[eventName] = thisEvent;
-        }
-    }
+    //public static void StopListening(string eventName, Action<Dictionary<int, object>> listener)
+    //{
+    //    if (eventManager == null) return;
+    //    Action<Dictionary<int, object>> thisEvent;
+    //    if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
+    //    {
+    //        thisEvent -= listener;
+    //        instance.eventDictionary[eventName] = thisEvent;
+    //    }
+    //}
 
-    public static void TriggerEvent(string eventName, Dictionary<int, object> message)
-    {
-        Action<Dictionary<int, object>> thisEvent = null;
-        if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
-        {
-            thisEvent.Invoke(message);
-        }
-    }
+    //public static void TriggerEvent(string eventName, Dictionary<int, object> message)
+    //{
+    //    Action<Dictionary<int, object>> thisEvent = null;
+    //    if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
+    //    {
+    //        thisEvent.Invoke(message);
+    //    }
+    //}
 }

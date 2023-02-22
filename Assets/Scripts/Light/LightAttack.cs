@@ -10,6 +10,7 @@ public class LightAttack : MonoBehaviour
 
     [SerializeField] private ManaBar _manaBar;
     [SerializeField] private Transform obj;
+    [SerializeField] private ColorChacheLight _pointLight;
 
     private RaycastHit[] _hitsToMove = new RaycastHit[8];
     private RaycastHit[] _hitsToAttack = new RaycastHit[8];
@@ -41,6 +42,7 @@ public class LightAttack : MonoBehaviour
         {   
             _isKeyEActive=true;
 
+            _pointLight.ColorChangeBlue();
             _lightChange.ColorChangeBlue();
 
         }
@@ -48,29 +50,13 @@ public class LightAttack : MonoBehaviour
         {
             _isKeyEActive = false;
 
+            _pointLight.ColorChangeYellow();
             _lightChange.ColorChangeYellow();
 
         }
 
 
         #endregion
-
-
-        //_rayCastTimer += Time.deltaTime;
-
-        //if (_rayCastTimer > _maxTime)
-        //{
-
-        //    _manaBar.AddMana(ref _mana);
-
-        //    EnemyMoveToPlayer();
-
-        //    AttackEnemyAround();
-
-
-        //    _rayCastTimer = 0;
-
-        //}
 
     }
 
@@ -84,7 +70,7 @@ public class LightAttack : MonoBehaviour
 
             EnemyMoveToPlayer();
 
-            AttackEnemyAround();
+            AttackEnemySpot();
         }
     }
 
@@ -104,32 +90,32 @@ public class LightAttack : MonoBehaviour
 
 
 
-    //private void AttackEnemyAround()
-    //{
-    //    if (_isKeyEActive)
-    //    {
-
-    //        int k = Physics.BoxCastNonAlloc(transform.position + _correct, _cubeLight,
-    //            Vector3.down, _hitsToAttack, Quaternion.identity, _maxDistance, 1 << 7);
-    //        for (int i = 0; i < k; i++)
-    //        {
-    //            if (_mana > 0)
-    //            {
-    //                _hitsToAttack[i].collider.gameObject.GetComponent<EnemyHelthChange>()?.Damage(ref _mana);
-
-    //                _manaBar.ChangeManaBar(_mana);
-    //            }
-    //            else
-    //            {
-    //                _lightChange.ColorChangeYellow();
-    //            }
-
-    //        }
-
-    //    }
-    //}
-
     private void AttackEnemyAround()
+    {
+        if (_isKeyEActive)
+        {
+
+            int k = Physics.BoxCastNonAlloc(transform.position + _correct, _cubeLight,
+                Vector3.down, _hitsToAttack, Quaternion.identity, _maxDistance, 1 << 7);
+            for (int i = 0; i < k; i++)
+            {
+                if (_mana > 0)
+                {
+                    _hitsToAttack[i].collider.gameObject.GetComponent<EnemyHelthChange>()?.Damage(ref _mana);
+
+                    _manaBar.ChangeManaBar(_mana);
+                }
+                else
+                {
+                    _lightChange.ColorChangeYellow();
+                }
+
+            }
+
+        }
+    }
+
+    private void AttackEnemySpot()
     {
         if (_isKeyEActive)
         {
@@ -154,10 +140,7 @@ public class LightAttack : MonoBehaviour
         }
     }
 
-    public void GoTo(Dictionary<string,object> fd)
-    {
-
-    }
+  
 
 
 

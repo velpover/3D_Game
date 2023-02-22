@@ -22,19 +22,20 @@ public class ColorChacheLight : MonoBehaviour
     {
         _light.color = _newBlue;
         _light.intensity = _maxIntensity;
-        StartCoroutine(GoToMaxRange());
+        //StartCoroutine(GoToMaxRange());
     }
 
-    public void ChangeRange()
-    {
-        StartCoroutine(GoToMinRange());
-    }
 
     public void ColorChangeYellow()
     {
 
         _light.intensity = _defaultIntensity;
         _light.color = Color.yellow;
+        //StartCoroutine(GoToMinRange());
+    }
+
+    public void ChangeRange()
+    {
         StartCoroutine(GoToMinRange());
     }
 
@@ -47,6 +48,8 @@ public class ColorChacheLight : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
+
+
     IEnumerator GoToMinRange()
     {
         while (_light.range > _defaultRange)
