@@ -13,7 +13,6 @@ namespace NewScene
         public event Action KeyQDown;
         public event Action KeyQUP;
 
-        private bool _isKeyPress = true;
 
 
         void Update()
