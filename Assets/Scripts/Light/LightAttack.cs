@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -22,7 +23,7 @@ public class LightAttack : MonoBehaviour
     private bool _isKeyEActive = false;
 
 
-    private Vector3 _correct = new(0, 3, 0);
+    private Vector3 _correct = new Vector3(0, 3, 0);
     private Vector3 _cubeCall = new Vector3(20, 0.1f, 20);
     private Vector3 _cubeLight = new Vector3(7f, 0.1f, 7f);
 
@@ -101,9 +102,7 @@ public class LightAttack : MonoBehaviour
             {
                 if (_mana > 0)
                 {
-                    _hitsToAttack[i].collider.gameObject.GetComponent<EnemyHelthChange>()?.Damage(ref _mana);
-
-                    _manaBar.ChangeManaBar(_mana);
+                    MakeDamage(_hitsToAttack[i].collider.gameObject);
                 }
                 else
                 {
@@ -126,9 +125,7 @@ public class LightAttack : MonoBehaviour
             {
                 if (_mana > 0)
                 {
-                    _hitsToAttack[i].collider.gameObject.GetComponent<EnemyHelthChange>()?.Damage(ref _mana);
-                    Debug.Log("");
-                    _manaBar.ChangeManaBar(_mana);
+                    MakeDamage(_hitsToAttack[i].collider.gameObject);
                 }
                 else
                 {
@@ -136,13 +133,18 @@ public class LightAttack : MonoBehaviour
                 }
 
             }
-
         }
     }
 
-  
+    private void MakeDamage(GameObject targetGo)
+    {
+        Enemy enemy = targetGo.GetComponent<Enemy>();
 
-
-
-
+        if (enemy != null)
+        {
+            enemy.ApplyDamage(1);
+            _mana--;
+            _manaBar.ChangeManaBar(_mana);
+        }
+    }
 }
