@@ -15,23 +15,21 @@ namespace NewScene
         private float _velocity = 20f;
         private float _rotateVelocity = 0.2f;
 
+        private IGameInput _gameInput;
+
 
         void Start()
         {
-
-            Cursor.visible = false;
-            Cursor.lockState=CursorLockMode.Locked;
+            _gameInput = InputManager.Instance.GameInput;
 
         }
-
-
 
         void Update()
         {
 
 
-            _inputX = Input.GetAxis("Vertical");
-            _inputY = Input.GetAxis("Horizontal");
+            _inputX = _gameInput.VerticalInput;
+            _inputY = _gameInput.HorizontalInput;
 
             _rotateY = Input.GetAxis("Mouse X");
 
